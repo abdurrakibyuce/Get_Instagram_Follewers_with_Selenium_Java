@@ -85,6 +85,7 @@ public class App {
     public int getcount(){
         String count = driver.findElement(followersLocator2).getText();
         return Integer.parseInt(count);
+
     }
 
 }
