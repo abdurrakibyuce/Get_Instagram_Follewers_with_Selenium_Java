@@ -14,6 +14,7 @@ public class App {
     By passwordLocator = new By.ByCssSelector("input[name='password']");
     By loginButtonLocator = new By.ByCssSelector("button[type='submit']");
     By followersLocator = By.cssSelector("span[class='g47SY ']");
+    By followersLocator2 = By.xpath("(//span[@class='g47SY '])[3]");
     By followersListLocator = By.cssSelector("._7UhW9.xLCgt.qyrsm.KV-D4.se6yk");
     By infoSaveLocator = By.className("olLwo");
     By userControlLocator = By.xpath("//span[text()=\"Zoë Kravitz\"]");
@@ -58,15 +59,13 @@ public class App {
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
         var sayfaSonu = js.executeScript(jsCommand);
-        int count = 0;
         while (true) {
-            count++;
             var son = sayfaSonu;
             Thread.sleep(750);
             sayfaSonu = js.executeScript(jsCommand);
-            if (son == sayfaSonu)
-                break;
-            else if (count == 50)
+            int followerCount = getcount();
+            List<WebElement> followerListSize = driver.findElements(followersListLocator);
+            if(followerCount == followerListSize.size())
                 break;
         }
     }
@@ -82,4 +81,10 @@ public class App {
         }
 
     }
+
+    public int getcount(){
+        String count = driver.findElement(followersLocator2).getText();
+        return Integer.parseInt(count);
+    }
+
 }
