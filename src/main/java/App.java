@@ -30,7 +30,7 @@ public class App {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public void loginWith (String username, String password) {
+    public void login (String username, String password) {
         waitFunction(usernamaLocator);
         driver.findElement(usernamaLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
