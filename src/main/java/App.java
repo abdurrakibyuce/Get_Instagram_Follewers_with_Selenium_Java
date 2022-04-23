@@ -25,31 +25,31 @@ public class App {
         driver.manage().window().maximize();
     }
 
-    private void waitFunction(By locator){
+    private void waitMethod(By locator){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void login (String username, String password) {
-        waitFunction(usernamaLocator);
+        waitMethod(usernamaLocator);
         driver.findElement(usernamaLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
         driver.findElement(loginButtonLocator).click();
     }
 
     public void navigateToProfile(String profileName) {
-        waitFunction(infoSaveLocator);
+        waitMethod(infoSaveLocator);
         driver.navigate().to(baseUrl.concat(profileName));
     }
 
     public void clickFollowersCount() {
-        waitFunction(userControlLocator);
+        waitMethod(userControlLocator);
         driver.findElements(followersLocator).get(2).click();
     }
 
     public void scrollDown() throws InterruptedException {
 
-        waitFunction(followersListLocator);
+        waitMethod(followersListLocator);
         String jsCommand = "" +
                 "sayfa = document.querySelector('.isgrP');" +
                 "sayfa.scrollTo(0,sayfa.scrollHeight);" +
@@ -73,7 +73,7 @@ public class App {
 
     public void getFollowerList() {
 
-        waitFunction(followersListLocator);
+        waitMethod(followersListLocator);
         int count = 1;
         List<WebElement> followerList = driver.findElements(followersListLocator);
         for (WebElement follewer : followerList) {
